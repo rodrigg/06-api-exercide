@@ -1,9 +1,6 @@
 [
     {
-        "car_id": 1,
-        "name": "ABX",
-        "brand": "Tokiota",
-        "year_release": "1999"
+        "car_id": 1
     },
     {
         "car_id": 2,
@@ -34,5 +31,101 @@
         "name": "Green Roaster",
         "brand": "HMI",
         "year_release": "1976"
+    },
+    {
+        "car_id": 63,
+        "name": "paco",
+        "brand": "paco",
+        "year_release": "312312"
+    },
+    {
+        "car_id": 64,
+        "name": "5453",
+        "brand": "543",
+        "year_release": "54345"
+    },
+    {
+        "car_id": 65,
+        "name": "ABXw",
+        "brand": "Tokiota",
+        "year_release": "1999"
+    },
+    {
+        "car_id": 66,
+        "name": "432243324",
+        "brand": "432432",
+        "year_release": "432432"
+    },
+    {
+        "car_id": 67,
+        "name": "a",
+        "brand": "b!",
+        "year_release": 1000
+    },
+    {
+        "car_id": 68,
+        "name": "a",
+        "brand": "b!",
+        "year_release": 1000
+    },
+    {
+        "car_id": 69,
+        "name": "a",
+        "brand": "b",
+        "year_release": 1000
+    },
+    {
+        "car_id": 70,
+        "name": "a",
+        "brand": "b",
+        "year_release": 1000
+    },
+    {
+        "car_id": 71,
+        "name": "432432",
+        "brand": "432432",
+        "year_release": 432432
+    },
+    {
+        "car_id": 72,
+        "name": "0",
+        "brand": "Tokiota",
+        "year_release": "1999"
+    },
+    {
+        "car_id": 73,
+        "name": "0",
+        "brand": "Tokiota",
+        "year_release": "1999"
+    },
+    {
+        "car_id": 74,
+        "name": "ABXxxxxx",
+        "brand": "Tokiota",
+        "year_release": "1999"
+    },
+    {
+        "car_id": 75,
+        "name": "ABXcc",
+        "brand": "Tokiota",
+        "year_release": "1999"
+    },
+    {
+        "car_id": 76,
+        "name": "Colola",
+        "brand": "GIA",
+        "year_release": "2015"
+    },
+    {
+        "car_id": 77,
+        "name": "ABXXX",
+        "brand": "Tokiota",
+        "year_release": "1999"
+    },
+    {
+        "car_id": 78
+    },
+    {
+        "car_id": 79
     }
 ]

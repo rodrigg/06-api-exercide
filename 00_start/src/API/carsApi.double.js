@@ -1,43 +1,77 @@
-const data = [
-    {
-        "car_id": 1,
-        "name": "ABX",
-        "brand": "Tokiota",
-        "year_release": "1999"
-    },
-    {
-        "car_id": 2,
-        "name": "AZE",
-        "brand": "Tokiota",
-        "year_release": "1995"
-    },
-];
+import axios from "axios";
+import { baseUrl, graphqlUrl } from "./carsApi";
+import { GraphQLClient } from "graphql-request";
 
-export const getAllCars = () => {
-    return new Promise((resolve, _) => {
-        setTimeout(() => {
-            const cars = data.map((i) => i);
-            resolve(cars);
-        }, 500);
-    });
-}
+import { httpClient } from "./httpClient";
 
-export const getCarById = (id) => {
-    return new Promise((resolve, _) => {
-        setTimeout(() => {
-            const car = data.map((i) => i)
-                .find((c) => c.car_id === id);
-            resolve(car);
-        }, 500);
-    });
-}
+const baseUrlCars = `${baseUrl}/api/cars`;
+export const graphQLClient = new GraphQLClient(graphqlUrl);
 
-export const addCar = (car) => {
-    return new Promise((resolve, _) => {
-        setTimeout(() => {
-            car['car_id'] = (data.length + 1);
-            data.push(car);
-            resolve('ok'); // TODO: Check with browser
-        }, 500);
-    }); 
+//fetch
+
+export const getAllCars = () =>
+  fetch(baseUrlCars).then((response) => response.json());
+
+export const getCarById = (id) =>
+  fetch(`${baseUrlCars}/${id}`).then((response) => response.json());
+
+export const addCar = (car) =>
+  fetch(baseUrlCars, {
+    method: "POST",
+    body: JSON.stringify(car),
+  }).then((response) => response.json());
+//axios
+export const getAllCars2 = () =>
+  axios.get(baseUrlCars).then(({ data }) => data);
+
+export const getCarById2 = (id) =>
+  axios.get(`${baseUrlCars}/${id}`).then(({ data }) => data);
+
+export const addCar2 = (car) =>
+  axios.post(baseUrlCars, car).then(({ data }) => data);
+
+//XMLHttpRequest
+export const getAllCars3 = () => httpClient.get(baseUrlCars);
+
+export const getCarById3 = (id) => httpClient.get(`${baseUrlCars}/${id}`);
+
+export const addCar3 = (car) => httpClient.post(baseUrlCars, car);
+
+//Graphql
+const query = `
+  query {
+    cars{
+      car_id
+      name
+      brand
+      year_release
+      }
+  }
+`;
+export const getAllCars4 = () =>
+  graphQLClient.request(query).then(({ cars }) => cars);
+export const getCarById4 = (id) => {
+  const query = `
+  query {
+    car (id: "${id}"){
+      car_id
+      name
+      brand
+      year_release
+      }
+  }
+`;
+  return graphQLClient.request(query).then(({ car }) => car);
+};
+export const addCar4 = (car) => {
+  const query = `
+    mutation($carEdit: CarEdit!) {
+      addCar(carEdit: $carEdit)
+    }
+  `;
+  return graphQLClient
+    .request(query, {
+      carEdit: car,
+    })
+    .then((res) => res.saveCar);
 };
