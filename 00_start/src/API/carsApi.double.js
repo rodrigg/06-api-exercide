@@ -3,32 +3,30 @@ import { baseUrl, graphqlUrl } from "./carsApi";
 import { GraphQLClient } from "graphql-request";
 
 import { httpClient } from "./httpClient";
+import { httpClientService } from "./http-client.service";
 
 const baseUrlCars = `${baseUrl}/api/cars`;
 export const graphQLClient = new GraphQLClient(graphqlUrl);
 
-//fetch
-
-export const getAllCars = () =>
-  fetch(baseUrlCars).then((response) => response.json());
+//axios
+export const getAllCars = () => axios.get(baseUrlCars).then(({ data }) => data);
 
 export const getCarById = (id) =>
-  fetch(`${baseUrlCars}/${id}`).then((response) => response.json());
-
-export const addCar = (car) =>
-  fetch(baseUrlCars, {
-    method: "POST",
-    body: JSON.stringify(car),
-  }).then((response) => response.json());
-//axios
-export const getAllCars2 = () =>
-  axios.get(baseUrlCars).then(({ data }) => data);
-
-export const getCarById2 = (id) =>
   axios.get(`${baseUrlCars}/${id}`).then(({ data }) => data);
 
-export const addCar2 = (car) =>
+export const addCar = (car) =>
   axios.post(baseUrlCars, car).then(({ data }) => data);
+
+//fetch
+
+export const getAllCars2 = () =>
+  httpClientService.get(baseUrlCars).then((response) => response);
+
+export const getCarById2 = (id) =>
+  httpClientService.get(`${baseUrlCars}/${id}`).then((response) => response);
+
+export const addCar2 = (car) =>
+  httpClientService.post(baseUrlCars, car).then((response) => response);
 
 //XMLHttpRequest
 export const getAllCars3 = () => httpClient.get(baseUrlCars);

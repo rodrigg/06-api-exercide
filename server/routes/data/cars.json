@@ -126,6 +126,9 @@
         "car_id": 78
     },
     {
-        "car_id": 79
+        "car_id": 79,
+        "name": "32",
+        "brand": "32",
+        "year_release": "32"
     }
 ]

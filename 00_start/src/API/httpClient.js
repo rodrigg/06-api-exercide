@@ -43,3 +43,4 @@ export const httpClient = {
   get: (url, args) => ajax("GET", url, args),
   post: (url, args) => ajax("POST", url, args),
 };
+

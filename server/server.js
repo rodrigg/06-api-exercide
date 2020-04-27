@@ -9,6 +9,10 @@ const users = require("./routes/users");
 const cars = require("./routes/cars");
 const resolvers = require("./routes/resolvers");
 const typeDefs = require("./routes/type-defs");
+const expressjwt = require("express-jwt");
+const jwtCheck = expressjwt({
+  secret: "mysupersecretkey",
+});
 
 const app = express();
 // setup
@@ -18,7 +22,7 @@ app.use(cookieParser());
 app.use(cors());
 
 app.use("/api/users", users);
-app.use("/api/cars", cars);
+app.use("/api/cars", jwtCheck, cars);
 
 app.set("port", process.env.PORT || 3050);
 app.listen(app.get("port"));
